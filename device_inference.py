@@ -276,7 +276,6 @@ def get_dataset(args):
     return dataset
 
 def parse_args():
-    # Parse command line arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=str, default=None, help="Config file location")
     parser.add_argument('--direct', action='store_true', help="Whether to use direct prediction, sans scratchpad")
