@@ -20,7 +20,7 @@ def record_folder(cur_iter):
 def parse_args():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--no_prompt', action='store_true', help="Whether to remove prompts during eval")
+    parser.add_argument('--no_prompt', action='store_true', help="Whether to remove prompts during eval")           # 不用 few-shot
     parser.add_argument("--base_epochs", type=float, default=1., help="Epochs for the first iteration")
     parser.add_argument("--add_epochs", type=float, default=0.2, help="Epochs to add each iteration")
     parser.add_argument("--few_shot_train", action='store_true', help="Whether to use few shot training")
@@ -58,7 +58,7 @@ def parse_args():
 def gen_train():
     train_cmd = f"python3 device_inference.py --config={prev_config} --split=train --gen_length={args.gen_length} --p_show_hint_save={args.p_show_hint_save} "
     if task != "commonsenseqa":
-        train_cmd += f" --dataset_mode={task} "
+        train_cmd += f" --dataset_mode={task} "         # 因为里面默认是 commonsenseqa，并且代码里的值是 cqa，这里是兼容代码
     if args.rationalize:
         train_cmd += " --rationalize "
     if args.few_shot_train:
